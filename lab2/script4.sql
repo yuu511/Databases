@@ -14,7 +14,7 @@ City Books?*/
 
 SELECT DISTINCT dv_address.phone
 FROM dv_customer, cb_customers, dv_address
-WHERE  dv_customer.first_name=cb_customers.first_name AND  dv_customer.last_name = cb_customers.last_name; AND dv_address.address_id = dv_address.address_id
+WHERE  dv_customer.first_name=cb_customers.first_name AND  dv_customer.last_name = cb_customers.last_name AND dv_address.address_id = dv_customer.address_id;
 
 /*3.What are the first and last names of all customers who live in the district having the
 most customers?*/
@@ -49,7 +49,8 @@ WHERE cb_authors.author_id = a.author_id AND a.author_id =
 FROM cb_books b
 GROUP BY  b.author_id
 ORDER BY count(*) DESC
-LIMIT 10);
+LIMIT 10) 
+GROUP BY first_name;
 
 
 
