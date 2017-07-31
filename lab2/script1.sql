@@ -39,7 +39,7 @@ CREATE TABLE dv_film  (
 	title varchar(50),
 	descripition TEXT,
 	length SMALLINT,
-	rating ENUM
+	rating mpaa_rating
 );
 
 /*CityBooks DB*/ 
