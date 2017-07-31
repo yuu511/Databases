@@ -5,7 +5,7 @@
 
 /*1.What are the first and last names of all people who are customers of both Downtown Video and
 City Books ?*/
-SELECT db_customer.first_name, db_customer.last_name
+SELECT dv_customer.first_name, dv_customer.last_name
 FROM dv_customer, cb_customers
 WHERE  dv_customer.first_name=cb_customers.first_name AND  dv_customer.last_name = cb_customers.last_name;
 
@@ -13,8 +13,8 @@ WHERE  dv_customer.first_name=cb_customers.first_name AND  dv_customer.last_name
 City Books?*/
 
 SELECT dv_customer.phone
-FROM dv_customer, cb_customers
-WHERE dv_customer.phone = cb_customers.phone;
+FROM dv_address, cb_customers
+WHERE dv_address.phone = cb_customers.phone;
 
 /*3.What are the first and last names of all customers who live in the district having the
 most customers?*/
@@ -44,7 +44,7 @@ authors, sorted in descending order)*/
 
 SELECT DISTINCT first_name, last_name, count(a)
 FROM cb_authors, cb_books a 
-WHERE cb_authors.author_id = cb_books.author_id AND
+WHERE cb_authors.author_id = a.cb_books.author_id AND
 (SELECT b.author_id
 FROM cb_books b
 GROUP BY  b.author_id
