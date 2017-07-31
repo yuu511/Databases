@@ -32,8 +32,8 @@ LIMIT 1);
 many films have that rating? (Return both the rating and the number offilms in one
 result.)*/
 
-SELECT rating,count(a)
-FROM dv_film a
+SELECT count(rating)
+FROM dv_film
 GROUP BY rating
 ORDER BY count(*) ASC
 LIMIT 1;
@@ -44,13 +44,13 @@ authors, sorted in descending order)*/
 
 SELECT first_name, last_name, count(a)
 FROM cb_authors, cb_books a 
-WHERE cb_authors.author_id = a.author_id AND a.author_id =  
+WHERE cb_authors.author_id = a.author_id AND cb_authors.author_id IN
 (SELECT b.author_id
 FROM cb_books b
 GROUP BY  b.author_id
 ORDER BY count(*) DESC
-LIMIT 10) 
-GROUP BY first_name,last_name;
+LIMIT 10);
+
 
 
 
