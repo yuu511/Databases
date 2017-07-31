@@ -50,7 +50,7 @@ FROM cb_books b
 GROUP BY  b.author_id
 ORDER BY count(*) DESC
 LIMIT 10) 
-GROUP BY first_name;
+GROUP BY first_name,last_name;
 
 
 
