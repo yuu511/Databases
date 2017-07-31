@@ -3,7 +3,7 @@
 
 /*downtown video -> merged table*/
 
-INSERT INTO mg_customers (customer_id, first_name, last_name, email, address_id, active);
+INSERT INTO mg_customers (customer_id, first_name, last_name, email, address_id, active)
 SELECT dv_customer.customer_id, dv_customer.first_name, dv_customer.last_name, dv_customer.email, dv_customer.address_id, dv_customer.active
 FROM dv_customer;
 
