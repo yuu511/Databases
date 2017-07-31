@@ -42,7 +42,7 @@ LIMIT 1;
 books eachhaswritten? (Returnbothauthornameandthenumber ofbooksoftop10
 authors, sorted in descending order)*/
 
-SELECT DISTINCT first_name, last_name, count(author_id)
+SELECT DISTINCT first_name, last_name, count(cb_books.author_id)
 FROM cb_authors, cb_books 
 WHERE cb_authors.author_id = cb_books.author_id AND cb_authors.author_id IN
 (SELECT b.author_id
