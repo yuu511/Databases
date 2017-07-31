@@ -13,8 +13,8 @@ WHERE  dv_customer.first_name=cb_customers.first_name AND  dv_customer.last_name
 City Books?*/
 
 SELECT DISTINCT dv_address.phone
-FROM dv_address, cb_customers, dv_customer
-WHERE dv_customer.first_name=cb_customers.first_name AND  dv_customer.last_name = cb_customers.last_name;
+FROM dv_customer, cb_customers, dv_address
+WHERE  dv_customer.first_name=cb_customers.first_name AND  dv_customer.last_name = cb_customers.last_name; AND dv_address.address_id = dv_address.address_id
 
 /*3.What are the first and last names of all customers who live in the district having the
 most customers?*/
@@ -32,7 +32,7 @@ LIMIT 1);
 many films have that rating? (Return both the rating and the number offilms in one
 result.)*/
 
-SELECT DISTINCT rating,count(a)
+SELECT rating,count(a)
 FROM dv_film a
 GROUP BY rating
 ORDER BY count(*) ASC
@@ -42,7 +42,7 @@ LIMIT 1;
 books eachhaswritten? (Returnbothauthornameandthenumber ofbooksoftop10
 authors, sorted in descending order)*/
 
-SELECT DISTINCT first_name, last_name, count(a)
+SELECT first_name, last_name, count(a)
 FROM cb_authors, cb_books a 
 WHERE cb_authors.author_id = a.author_id AND a.author_id =  
 (SELECT b.author_id
@@ -50,8 +50,6 @@ FROM cb_books b
 GROUP BY  b.author_id
 ORDER BY count(*) DESC
 LIMIT 10);
-GROUP BY first_name
-ORDER BY count (a) DESC
 
 
 
