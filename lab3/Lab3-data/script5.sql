@@ -2,6 +2,7 @@
 /*Lab 3 script5.sql*/
 -- CREATE VIEW customer_city AS
 SELECT dv_customer.first_name,dv_customer.last_name,city_id
-FROM mg_customers, dv_address, dv_customer
-WHERE mg_customers.first_name = dv_customer.first_name 
-AND mg_customers.last_name = dv_customer.last_name;
+FROM dv_customer, cb_customers
+WHERE cb_customers.first_name = dv_customer.first_name 
+AND cb_customers.last_name = dv_customer.last_name;
+
