@@ -25,7 +25,7 @@ ON mg_customers (first_name,last_name);
 
 EXPLAIN ANALYZE
 SELECT first_name
-FROM mg_customers WITH (INDEX(firstlast))
+FROM mg_customers
 WHERE first_name= 'John';
 
 
