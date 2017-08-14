@@ -22,8 +22,15 @@ SELECT first_name, last_name,title
 FROM cb_authors, cb_books
 WHERE cb_authors.author_id = cb_books.author_id;
 
+/*4. query */
 SELECT title
-FROM cb_books, cb_authors
-WHERE cb_authors.author_id = cb_books.author_id
-AND cb_authors.first_name = 'Stephen'
-AND cb_authors.last_name = 'Fry';
+FROM author_title
+WHERE first_name = 'Stephen'
+AND last_name = 'Fry';
+
+/*5. query*/
+SELECT district, COUNT(address_id)
+FROM district_stat
+GROUP BY district
+ORDER BY count(*)ASC
+LIMIT 5;
