@@ -5,8 +5,7 @@
 UPDATE mg_customers
 SET active = TRUE
 WHERE active IS NULL 
-AND last_name LIKE 'B%' 
-OR last_name LIKE 'C%';
+AND (last_name LIKE 'B%' OR last_name LIKE 'C%');
 
 /*2. insert*/
 -- INSERT INTO dv_address
@@ -26,6 +25,14 @@ WHERE length > (SELECT AVG(b.length)
 SELECT MAX(length),MIN(length),AVG(length),rating
 FROM dv_film
 GROUP BY rating;
+
+/*5.Delete all books Written by Nevil Shute */
+DELETE FROM cb_books
+WHERE author_id= (SELECT b.author_id 
+	              FROM cb_authors b
+	              WHERE b.first_name='Nevil'
+	              AND b.last_name='Shute');
+
 
 
 
