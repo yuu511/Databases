@@ -13,4 +13,4 @@ AND dv_customer.address_id = dv_address.address_id;
 SELECT district, COUNT(address_id)
 FROM dv_address
 GROUP BY district
-ORDER BY count(*)ASC
+ORDER BY count(*)ASC;
