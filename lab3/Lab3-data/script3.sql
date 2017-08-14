@@ -11,5 +11,4 @@ UPDATE dv_address
 SET address_id = 1 WHERE address_id IS NULL;
 
 ALTER TABLE dv_address
-ALTER COLUMN address_id SET address_id = 1 WHERE address_id IS NULL,
 ADD CONSTRAINT address_notnull CHECK (address_id IS NOT NULL);
