@@ -9,11 +9,11 @@ AND (last_name LIKE 'B%' OR last_name LIKE 'C%');
 
 /*2. insert*/
 INSERT INTO dv_address
-VALUES (700,'Koshland','Way','otonokizaka',654,'95064','1234');
+VALUES (700,'Koshland','Way',NULL,654,'95064',NULL);
 
 /*using address_id created above*/
 INSERT INTO mg_customers
-VALUES (DEFAULT,'John','Smith','nigonigo@db.com',700,TRUE);
+VALUES (DEFAULT,'John','Smith',NULL,700,NULL);
 
 /*3. List title of each film whose length exceeds the average length of all films */
 SELECT a.title
