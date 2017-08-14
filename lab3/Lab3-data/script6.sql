@@ -8,12 +8,12 @@ WHERE active IS NULL
 AND (last_name LIKE 'B%' OR last_name LIKE 'C%');
 
 /*2. insert*/
--- INSERT INTO dv_address
--- VALUES (700,'Koshland','Way','otonokizaka',654,'95064','1234');
+INSERT INTO dv_address
+VALUES (700,'Koshland','Way','otonokizaka',654,'95064','1234');
 
 /*using address_id created above*/
--- INSERT INTO mg_customers
--- VALUES (2526,'John','Smith','nigonigo@db.com',700,TRUE);
+INSERT INTO mg_customers
+VALUES (2526,'John','Smith','nigonigo@db.com',700,TRUE);
 
 /*3. List title of each film whose length exceeds the average length of all films */
 SELECT a.title
@@ -21,7 +21,7 @@ FROM dv_film a
 WHERE length > (SELECT AVG(b.length)
 	             FROM dv_film b);
 
-/*4. MAx/ MIN / AVG length of FILMS*/
+/*4. Max/ MIN / AVG length of FILMS*/
 SELECT MAX(length),MIN(length),AVG(length),rating
 FROM dv_film
 GROUP BY rating;
