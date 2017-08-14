@@ -22,4 +22,11 @@ FROM dv_film a
 WHERE length > (SELECT AVG(b.length)
 	             FROM dv_film b);
 
+/*4. MAx/ MIN / AVG length of FILMS*/
+SELECT MAX(length),MIN(length),AVG(length),rating
+FROM dv_film
+GROUP BY rating;
+
+
+
 
