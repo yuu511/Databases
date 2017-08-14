@@ -16,7 +16,7 @@ WHERE author_id= 1;
 
 /*illegal insertion: mg_customers*/
 INSERT INTO mg_customers
-VALUES (1000020400,'lul','xd','hehexd@db.com',1002000400,t);
+VALUES (1000020400,'lul','xd','hehexd@db.com',1002000400);
 
 /*illegal insertion: cb_books*/
 INSERT INTO cb_books
