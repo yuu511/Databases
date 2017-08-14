@@ -32,3 +32,6 @@ AND last_name = 'Fry';
 SELECT district
 FROM district_stat
 LIMIT 5;
+
+/* Rename customer_city -> popuko */
+ALTER VIEW customer_city RENAME TO popuko;
