@@ -19,7 +19,7 @@ VALUES (1,'lul','xd',-12398923,PG);
 
 /*illegal insertion: mg _customers */
 INSERT INTO mg_customers
-(NULL,'lul','xd','hehexd@db.com',NULL);
+VALUES (NULL,'lul','xd','hehexd@db.com',NULL);
 
 /*illegal insertion: dv_address*/
 INSERT INTO dv_address
