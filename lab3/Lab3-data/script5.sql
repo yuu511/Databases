@@ -17,6 +17,6 @@ GROUP BY district
 ORDER BY count(*)ASC;
 
 /*view 3*/
-SELECT first_name, last_name
+SELECT first_name, last_name,title
 FROM cb_authors, cb_books
 WHERE cb_authors.author_id = cb_books.author_id;
