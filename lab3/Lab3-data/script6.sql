@@ -19,5 +19,6 @@ OR last_name LIKE '%C';
 /*3. List title of each film whose length exceeds the average length of all films */
 SELECT title, AVG(length)
 FROM dv_film
-WHERE length > AVG(length);
+GROUP BY title
+HAVING length > AVG(length);
 
