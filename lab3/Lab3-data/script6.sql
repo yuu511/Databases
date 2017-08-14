@@ -20,6 +20,6 @@ OR last_name LIKE '%C';
 SELECT a.title
 FROM dv_film a
 HAVING length > (SELECT AVG(b.length)
-	             FROM dv_film b)
+	             FROM dv_film b);
 
 
