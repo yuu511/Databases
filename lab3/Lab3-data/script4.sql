@@ -52,6 +52,7 @@ VALUES (1001,'filmtitle1','xd',100,'PG');
 INSERT INTO dv_address
 VALUES (2525,'rabu','raidu','otonokizaka',300,'95048','1234');
 
+/*using address_id created above*/
 INSERT INTO mg_customers
 VALUES (2525,'nico','yazawa','hehexd@db.com',2525,TRUE);
 
