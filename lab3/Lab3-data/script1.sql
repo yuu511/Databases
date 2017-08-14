@@ -1,3 +1,6 @@
+/*Elijah Cordova 1425119*/
+/*Lab 3 script1.sql*/
+
 ALTER TABLE mg_customers
 ADD PRIMARY KEY (customer_id);
 

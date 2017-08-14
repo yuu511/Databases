@@ -1,3 +1,6 @@
+/*Elijah Cordova 1425119*/
+/*Lab 3 script3.sql*/
+
 ALTER TABLE dv_film
 ADD CONSTRAINT positive_length CHECK (length>0);
 
