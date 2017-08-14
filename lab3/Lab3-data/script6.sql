@@ -5,8 +5,8 @@
 UPDATE mg_customers
 SET active = TRUE
 WHERE active IS NULL 
-AND last_name LIKE '%B' 
-OR last_name LIKE '%C';
+AND last_name LIKE 'B%' 
+OR last_name LIKE 'C%';
 
 /*2. insert*/
 -- INSERT INTO dv_address
