@@ -29,8 +29,6 @@ WHERE first_name = 'Stephen'
 AND last_name = 'Fry';
 
 /*5. query*/
-SELECT district, COUNT(address_id)
+SELECT district
 FROM district_stat
-GROUP BY district
-ORDER BY count(*)ASC
 LIMIT 5;
