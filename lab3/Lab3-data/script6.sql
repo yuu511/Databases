@@ -17,7 +17,7 @@ OR last_name LIKE '%C';
 -- VALUES (2526,'John','Smith','nigonigo@db.com',700,TRUE);
 
 /*3. List title of each film whose length exceeds the average length of all films */
-SELECT title, AVG(length) AS average
+SELECT title, AVG(length) AS "average"
 FROM dv_film
 GROUP BY title
 WHERE length > average;
