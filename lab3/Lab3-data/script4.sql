@@ -15,7 +15,7 @@ WHERE author_id= 1;
 
 /*illegal insertion: dv_film*/
 INSERT INTO dv_film
-VALUES (1,'lul','xd',-12398923,'PG');
+VALUES (1,'lul','xd',-12,'PG');
 
 /*illegal insertion: mg _customers */
 INSERT INTO mg_customers
