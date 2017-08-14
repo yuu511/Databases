@@ -46,12 +46,11 @@ DETAIL:  Failing row contains (null, lul, xd, hehexd, null, test, test).
  */
 
  /* Legal Insertions */
--- INSERT INTO dv_film
--- VALUES (1001,'filmtitle1','xd',100,'PG');
+INSERT INTO dv_film
+VALUES (1001,'filmtitle1','xd',100,'PG');
 
--- INSERT INTO dv_address
--- VALUES (2525,'rabu','raidu','otonokizaka',300,'95048','1234');
-
+INSERT INTO dv_address
+VALUES (2525,'rabu','raidu','otonokizaka',300,'95048','1234');
 
 INSERT INTO mg_customers
 VALUES (2525,'nico','yazawa','hehexd@db.com',2525,TRUE);
