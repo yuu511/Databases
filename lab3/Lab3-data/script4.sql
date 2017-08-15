@@ -11,6 +11,18 @@ WHERE address_id= 47;
 DELETE FROM cb_authors
 WHERE author_id= 1;
 
+ /* Legal Insertions */
+INSERT INTO dv_film
+VALUES (1001,'filmtitle1','xd',100,'PG');
+
+INSERT INTO dv_address
+VALUES (2525,'rabu','raidu','otonokizaka',300,'95048','1234');
+
+/*using address_id created above*/
+INSERT INTO mg_customers
+VALUES (2525,'nico','yazawa','hehexd@db.com',2525,TRUE);
+
+
 /* unit test: illegal insertions constraints*/
 
 /*illegal insertion: dv_film*/
@@ -45,16 +57,6 @@ DETAIL:  Failing row contains (null, lul, xd, hehexd, null, test, test).
 
  */
 
- /* Legal Insertions */
-INSERT INTO dv_film
-VALUES (1001,'filmtitle1','xd',100,'PG');
-
-INSERT INTO dv_address
-VALUES (2525,'rabu','raidu','otonokizaka',300,'95048','1234');
-
-/*using address_id created above*/
-INSERT INTO mg_customers
-VALUES (2525,'nico','yazawa','hehexd@db.com',2525,TRUE);
 
 
 
