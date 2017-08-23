@@ -33,7 +33,7 @@ public class StoreApplication {
 	    	System.out.print ("error at getCustomerPhone");
 	    	System.exit(1);
 	     }
-	      System.out.print (result.size());
+	      System.out.println(result.size());
 		return result;
 	}
 
@@ -55,7 +55,7 @@ public class StoreApplication {
 	    	System.out.print ("error at getCustomerPhone");
 	    	System.exit(1);
 	     }
-	      System.out.print (result.size());
+	      System.out.println(result.size());
 
 		return result;
 	}
@@ -67,7 +67,17 @@ public class StoreApplication {
 	public final int countCustomersInDistrict(Connection connection,
 			String districtName, boolean active) {
 		int result = -1;
-
+		String query ="SELECT count(a) FROM mg_customers a, dv_address b WHERE a.address_id = b.address_id AND b.district ="+districtName+" AND a.active = "+active+"";
+        try (Statement stmt = connection.createStatement()){
+		  ResultSet rs = stmt.executeQuery(query);
+		  while (rs.next()){
+		  	result= rs.getInt(1);
+		  }
+	     } catch (SQLException e) {
+	    	System.out.print ("error at getCustomerPhone");
+	    	System.exit(1);
+	     }
+	      System.out.println(result);
 		return result;
 	}
 
