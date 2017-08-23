@@ -34,7 +34,7 @@ public class Driver
         app.getFilmTitlesBasedOnLengthRange(connection, 60, 120);
     
     int count = app.countCustomersInDistrict(connection, "Buenos Aires",
-            false);
+            true);
     
     app.insertFilmIntoInventory(connection, "Sequel to the Prequel",
             "Memorable", 98, "PG-13");
