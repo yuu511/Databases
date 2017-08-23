@@ -24,7 +24,7 @@ public class StoreApplication {
 			String firstName, String lastName) {
 		List<String> result = new ArrayList<String>();
 		String query = "SELECT phone FROM dv_address";
-		try (Statement stmt = con.createStatement()){
+		try (Statement stmt = connection.createStatement()){
 		  ResultSet rs = stmt.executeQuery(query);
 		  while (rs.next()){
 		  	System.out.print (rs.getString("phone"));
