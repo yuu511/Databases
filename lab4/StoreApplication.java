@@ -45,7 +45,7 @@ public class StoreApplication {
 	public List<String> getFilmTitlesBasedOnLengthRange(Connection connection,
 			int minLength, int maxLength) {
 		List<String> result = new LinkedList<String>();
-		String query = "SELECT a.title FROM dv_film a WHERE length >="+minlength+" AND length <="+maxlength+"";
+		String query = "SELECT a.title FROM dv_film a WHERE length >="+minLength+" AND length <="+maxLength+"";
         try (Statement stmt = connection.createStatement()){
 		  ResultSet rs = stmt.executeQuery(query);
 		  while (rs.next()){
