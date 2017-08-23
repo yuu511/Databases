@@ -24,10 +24,15 @@ public class StoreApplication {
 			String firstName, String lastName) {
 		List<String> result = new ArrayList<String>();
 		String query = "SELECT phone FROM dv_address";
-		ResultSet rs = stmt.executeQuery(query);
-		while (rs.next()){
-			System.out.print (rs.getString("phone"));
-		}
+		try (Statement stmt = con.createStatement()){
+		  ResultSet rs = stmt.executeQuery(query);
+		  while (rs.next()){
+		  	System.out.print (rs.getString("phone"));
+		  }
+	    } catch (SQLException e){
+	    	System.out.print ("error at getCustomerPhone");
+	    	System.exit(1);
+	      }
 
 
 		return result;
