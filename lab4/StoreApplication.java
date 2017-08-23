@@ -27,12 +27,14 @@ public class StoreApplication {
 		try (Statement stmt = connection.createStatement()){
 		  ResultSet rs = stmt.executeQuery(query);
 		  while (rs.next()){
-		  	System.out.print (rs.getString("phone"));
+		  	result.add(rs.getString("phone"));
+		  	//System.out.print (rs.getString("phone"));
 		  }
 	    } catch (SQLException e){
 	    	System.out.print ("error at getCustomerPhone");
 	    	System.exit(1);
 	      }
+	      System.out.print (result);
 
 
 		return result;
