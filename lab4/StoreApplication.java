@@ -76,9 +76,9 @@ public class StoreApplication {
 		System.out.print (query);
         try (Statement stmt = connection.createStatement()){
 		  ResultSet rs = stmt.executeQuery(query);
-		  // while (rs.next()){
-		  // 	result= rs.getInt(1);
-		  // }
+		  while (rs.next()){
+		  	result= rs.getInt(1);
+		  }
 	     } catch (SQLException e) {
 	    	System.out.print ("countcustomers");
 	    	System.exit(1);
