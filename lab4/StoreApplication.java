@@ -33,7 +33,7 @@ public class StoreApplication {
 	    	System.out.print ("error at getCustomerPhone");
 	    	System.exit(1);
 	     }
-	      System.out.println(result.size());
+	      System.out.println(result);
 		return result;
 	}
 
@@ -73,7 +73,6 @@ public class StoreApplication {
 		else
 			aQ="f";
 		String query ="SELECT count(a) FROM mg_customers a, dv_address b WHERE a.address_id = b.address_id AND b.district ='"+districtName+"' AND a.active = '"+aQ+"'";
-		System.out.print (query);
         try (Statement stmt = connection.createStatement()){
 		  ResultSet rs = stmt.executeQuery(query);
 		  while (rs.next()){
@@ -96,8 +95,9 @@ public class StoreApplication {
 	 * simply a question mark, casting would look like ?::mpaa_rating 
 	 */
 	public void insertFilmIntoInventory(Connection connection, String
-			title, String description, int length, String rating)
-	{
+			title, String description, int length, String rating){
+             String query = "INSERT INTO dv_film VALUES (DEFAULT,'"+title+"','"+description+"',"+length+",'"+rating"')";
+             System.out.print (query);
 
 	}
 
