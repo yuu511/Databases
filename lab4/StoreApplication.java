@@ -33,7 +33,7 @@ public class StoreApplication {
 	    	System.out.print ("error at getCustomerPhone");
 	    	System.exit(1);
 	     }
-	      System.out.print (result);
+	      System.out.print (result.size());
 		return result;
 	}
 
