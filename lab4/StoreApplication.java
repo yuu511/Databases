@@ -96,7 +96,7 @@ public class StoreApplication {
 	 */
 	public void insertFilmIntoInventory(Connection connection, String
 			title, String description, int length, String rating){
-		 if (rating ="")
+		 if (rating =="")
 		 rating = "?";
          String query = "INSERT INTO dv_film VALUES (DEFAULT,'"+title+"','"+description+"',"+length+",'"+rating+"')";
          System.out.print (query);
