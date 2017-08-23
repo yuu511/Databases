@@ -72,7 +72,8 @@ public class StoreApplication {
 			aQ="t";
 		else
 			aQ="f";
-		String query ="SELECT count(a) FROM mg_customers a, dv_address b WHERE a.address_id = b.address_id AND b.district ='"+districtName+"' AND a.active = '"+active+"";
+		String query ="SELECT count(a) FROM mg_customers a, dv_address b WHERE a.address_id = b.address_id AND b.district ='"+districtName+"' AND a.active = '"+aQ+"'";
+		System.out.print (query);
         try (Statement stmt = connection.createStatement()){
 		  ResultSet rs = stmt.executeQuery(query);
 		  // while (rs.next()){
