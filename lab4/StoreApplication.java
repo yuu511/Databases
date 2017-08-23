@@ -67,7 +67,12 @@ public class StoreApplication {
 	public final int countCustomersInDistrict(Connection connection,
 			String districtName, boolean active) {
 		int result = -1;
-		String query ="SELECT count(a) FROM mg_customers a, dv_address b WHERE a.address_id = b.address_id AND b.district ="+districtName+" AND a.active = "+active+"";
+		String aQ;
+		if (active)
+			aQ="t";
+		else
+			aQ="f";
+		String query ="SELECT count(a) FROM mg_customers a, dv_address b WHERE a.address_id = b.address_id AND b.district ='"+districtName+"' AND a.active = '"+active+"";
         try (Statement stmt = connection.createStatement()){
 		  ResultSet rs = stmt.executeQuery(query);
 		  // while (rs.next()){
