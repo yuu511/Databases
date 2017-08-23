@@ -9,6 +9,8 @@ import java.util.*;
  * you would have
  *    getConnection("jdbc:postgresql://cmps180-db.lt.ucsc.edu/jsmith", 
  *    "jsmith" , "password");
+ * java -classpath /afs/cats.ucsc.edu/users/g/ejcordov/CMPS182/git/CMPS182/lab4/postgresql-9.3-1101.jdbc41.jar:. Driver
+ * or /mnt/d/etc/programs/CMPS182/lab4/postgresql-9.3-1101.jdbc41.jar
  */
 public class Driver
 {
@@ -26,7 +28,7 @@ public class Driver
 
     List<String> phoneNumbers =
         app.getCustomerPhoneFromFirstLastName(connection, "John",
-                "Smith");
+                "Farnsworth");
     
     List<String> filmTitles =
         app.getFilmTitlesBasedOnLengthRange(connection, 60, 120);
