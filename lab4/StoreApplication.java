@@ -28,15 +28,12 @@ public class StoreApplication {
 		  ResultSet rs = stmt.executeQuery(query);
 		  while (rs.next()){
 		  	result.add(rs.getString("phone"));
-		  	//System.out.print (rs.getString("phone"));
 		  }
-	    } catch (SQLException e){
+	     } catch (SQLException e) {
 	    	System.out.print ("error at getCustomerPhone");
 	    	System.exit(1);
-	      }
+	     }
 	      System.out.print (result);
-
-
 		return result;
 	}
 
@@ -48,6 +45,17 @@ public class StoreApplication {
 	public List<String> getFilmTitlesBasedOnLengthRange(Connection connection,
 			int minLength, int maxLength) {
 		List<String> result = new LinkedList<String>();
+		String query = "SELECT a.title FROM dv_film a WHERE length >="+minlength+" AND length <="+maxlength+"";
+        try (Statement stmt = connection.createStatement()){
+		  ResultSet rs = stmt.executeQuery(query);
+		  while (rs.next()){
+		  	result.add(rs.getString("title"));
+		  }
+	     } catch (SQLException e) {
+	    	System.out.print ("error at getCustomerPhone");
+	    	System.exit(1);
+	     }
+	      System.out.print (result);
 
 		return result;
 	}
