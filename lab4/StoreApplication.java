@@ -23,7 +23,7 @@ public class StoreApplication {
 	public List<String> getCustomerPhoneFromFirstLastName(Connection connection,
 			String firstName, String lastName) {
 		List<String> result = new ArrayList<String>();
-		String query = "SELECT phone FROM dv_address WHERE address_id = (SELECT address_id FROM mg_customers WHERE first_name = '"+firstName+"' AND last_name = '"+LastName+"')";
+		String query = "SELECT phone FROM dv_address WHERE address_id = (SELECT address_id FROM mg_customers WHERE first_name = '"+firstName+"' AND last_name = '"+ lastName +"')";
 		try (Statement stmt = connection.createStatement()){
 		  ResultSet rs = stmt.executeQuery(query);
 		  while (rs.next()){
