@@ -96,8 +96,16 @@ public class StoreApplication {
 	 */
 	public void insertFilmIntoInventory(Connection connection, String
 			title, String description, int length, String rating){
-             String query = "INSERT INTO dv_film VALUES (DEFAULT,'"+title+"','"+description+"',"+length+",'"+rating+"')";
-             System.out.print (query);
+		 if (rating ="")
+		 rating = "?";
+         String query = "INSERT INTO dv_film VALUES (DEFAULT,'"+title+"','"+description+"',"+length+",'"+rating+"')";
+         System.out.print (query);
+         try (Statement stmt = connection.createStatement()){
+		  ResultSet rs = stmt.executeQuery(query);
+	     } catch (SQLException e) {
+	    	System.out.print ("countcustomers");
+	    	System.exit(1);
+	     }
 
 	}
 
