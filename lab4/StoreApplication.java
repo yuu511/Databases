@@ -23,6 +23,12 @@ public class StoreApplication {
 	public List<String> getCustomerPhoneFromFirstLastName(Connection connection,
 			String firstName, String lastName) {
 		List<String> result = new ArrayList<String>();
+		String query = "SELECT phone FROM dv_address";
+		ResultSet rs = stmt.executeQuery(query);
+		while (rs.next()){
+			System.out.print (rs.getString("phone"));
+		}
+
 
 		return result;
 	}
