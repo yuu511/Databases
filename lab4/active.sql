@@ -1,7 +1,3 @@
-SELECT address_id
-FROM mg_customers
-WHERE active = 't'
-AND 
-IN (SELECT address_id 
-	FROM dv_address
-	WHERE district='Buenos Aires');
+SELECT count(a) 
+FROM mg_customers a, dv_address b 
+WHERE a.address_id = b.address_id AND b.district = 'Buenos Aires' AND a.active = 't';
