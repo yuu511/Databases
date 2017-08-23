@@ -1,4 +1,4 @@
 SELECT a.title
 FROM dv_film a
-WHERE length >= 5
-AND length <= 50;
+WHERE length >= 60
+AND length <= 120;
