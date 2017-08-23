@@ -1,6 +1,6 @@
-SELECT a.address_id
-FROM  dv_address a
-WHERE a.district = 'Buenos Aires'
-AND a.address_id= (SELECT DISTINCT b.address_id
-                   FROM mg_customers b
-                   WHERE b.active = 't');
+SELECT address_id
+FROM  dv_address
+WHERE district = 'Buenos Aires'
+AND dv_address.address_id= (SELECT mg_customers.address_id
+                   FROM mg_customers
+                   WHERE mg_customers.active = 't');
