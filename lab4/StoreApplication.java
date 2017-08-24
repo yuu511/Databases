@@ -34,9 +34,8 @@ public class StoreApplication {
 		  while (rs.next()){
 		  	result.add(rs.getString("phone"));
 		  }
-		  	rs.close();
-		  	stmt.close();
-		  	System.out.println(result.size());
+		   rs.close();
+		   stmt.close();
 	     } catch (SQLException e) {
 	    		System.err.println("Query failed in getCustomerPhoneFromFirstLastName()");
 				System.err.println("Message from Postgres: " + e.getMessage());
@@ -63,7 +62,6 @@ public class StoreApplication {
 		  }
 		  	rs.close();
 		  	stmt.close();
-		  	System.out.println(result.size());
 		  } catch (SQLException e) {
 	    	System.err.println("Query failed in getFilmTitlesBasedOnLengthRange()");
 			System.err.println("Message from Postgres: " + e.getMessage());
@@ -89,8 +87,7 @@ public class StoreApplication {
 		  }
 		  	rs.close();
 		  	stmt.close();
-		  	System.out.println(result);
-	     } catch (SQLException e) {
+	      } catch (SQLException e) {
 	    	System.err.println("Query failed in countCustomersInDistrict()");
 			System.err.println("Message from Postgres: " + e.getMessage());
 			System.exit(-1);
