@@ -64,8 +64,7 @@ public class StoreApplication {
 		  	rs.close();
 		  	stmt.close();
 		  	System.out.println(result.size());
-		  }
-	     } catch (SQLException e) {
+		  } catch (SQLException e) {
 	    	System.err.println("Query failed in getFilmTitlesBasedOnLengthRange()");
 			System.err.println("Message from Postgres: " + e.getMessage());
 			System.exit(-1);
