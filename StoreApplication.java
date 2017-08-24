@@ -1,3 +1,6 @@
+/*Elijah Cordova 1425119*/
+/*Lab 4 StoreApplication.java*/
+
 import java.sql.*;
 import java.util.*;
 
@@ -23,18 +26,22 @@ public class StoreApplication {
 	public List<String> getCustomerPhoneFromFirstLastName(Connection connection,
 			String firstName, String lastName) {
 		List<String> result = new ArrayList<String>();
-		String query = "SELECT phone FROM dv_address";
-		try (Statement stmt = connection.createStatement()){
-		  ResultSet rs = stmt.executeQuery(query);
+		try {
+		  PreparedStatement stmt = connection.prepareStatement("SELECT phone FROM dv_address WHERE address_id = (SELECT address_id FROM mg_customersWHERE first_name= ? AND last_name = ?");
+		  stmt.setString(1, firstName);
+		  stmt.setString(2, lastName);
+		  ResultSet rs = stmt.executeQuery();
 		  while (rs.next()){
-		  	System.out.print (rs.getString("phone"));
+		  	result.add(rs.getString("phone"));
 		  }
-	    } catch (SQLException e){
-	    	System.out.print ("error at getCustomerPhone");
-	    	System.exit(1);
-	      }
-
-
+		  	rs.close();
+		  	stmt.close();
+		  	System.out.println(result.size());
+	     } catch (SQLException e) {
+	    		System.err.println("Query failed in getCustomerPhoneFromFirstLastName()");
+				System.err.println("Message from Postgres: " + e.getMessage());
+				System.exit(-1);
+	     }
 		return result;
 	}
 
@@ -46,7 +53,23 @@ public class StoreApplication {
 	public List<String> getFilmTitlesBasedOnLengthRange(Connection connection,
 			int minLength, int maxLength) {
 		List<String> result = new LinkedList<String>();
-
+        try {
+		  PreparedStatement stmt = connection.prepareStatement("SELECT a.title FROM dv_film a WHERE length >= ? AND length <= ?");
+		  stmt.setInt(1, minLength);
+		  stmt.setString(2, maxLength);
+		  ResultSet rs = stmt.executeQuery();
+		   while (rs.next()){
+		  	result.add(rs.getString(1));
+		  }
+		  	rs.close();
+		  	stmt.close();
+		  	System.out.println(result.size());
+		  }
+	     } catch (SQLException e) {
+	    	System.err.println("Query failed in getFilmTitlesBasedOnLengthRange()");
+			System.err.println("Message from Postgres: " + e.getMessage());
+			System.exit(-1);
+	     }
 		return result;
 	}
 
@@ -57,7 +80,22 @@ public class StoreApplication {
 	public final int countCustomersInDistrict(Connection connection,
 			String districtName, boolean active) {
 		int result = -1;
-
+        try {
+		PreparedStatement stmt = connection.prepareStatement("SELECT count(a) FROM mg_customers a, dv_address b WHERE a.address_id = b.address_id AND b.district = ? AND a.active = ?;");
+		  stmt.setString(1, districtName);
+		  stmt.setBoolean(2, active);
+		  ResultSet rs = stmt.executeQuery();
+		   while (rs.next()){
+		  	result = (rs.getInt(1));
+		  }
+		  	rs.close();
+		  	stmt.close();
+		  	System.out.println(result);
+	     } catch (SQLException e) {
+	    	System.err.println("Query failed in countCustomersInDistrict()");
+			System.err.println("Message from Postgres: " + e.getMessage());
+			System.exit(-1);
+	     }
 		return result;
 	}
 
@@ -70,8 +108,20 @@ public class StoreApplication {
 	 * simply a question mark, casting would look like ?::mpaa_rating 
 	 */
 	public void insertFilmIntoInventory(Connection connection, String
-			title, String description, int length, String rating)
-	{
+			title, String description, int length, String rating){
+         try {
+		 	PreparedStatement stmt = connection.prepareStatement("INSERT INTO dv_film (title, description, length, rating) VALUES (?, ?, ?, cast(? as mpaa_rating));");
+		 	stmt.setString(1, title);
+        	stmt.setString(2, description);
+        	stmt.setInt(3, length);
+        	stmt.setString(4, rating);
+        	stmt.execute();
+        	stmt.close();
+	     } catch (SQLException e) {
+	    	System.err.println("Query failed in insertFilmIntoInventory()");
+			System.err.println("Message from Postgres: " + e.getMessage());
+			System.exit(-1);
+	     }
 
 	}
 
