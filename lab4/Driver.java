@@ -29,15 +29,35 @@ public class Driver
     List<String> phoneNumbers =
         app.getCustomerPhoneFromFirstLastName(connection, "John",
                 "Farnsworth");
+    System.out.println (phoneNumbers.size());
     
     List<String> filmTitles =
         app.getFilmTitlesBasedOnLengthRange(connection, 60, 120);
+    System.out.println (filmTitles.size());    
     
     int count = app.countCustomersInDistrict(connection, "Buenos Aires",
             true);
+    System.out.println (count);
     
     app.insertFilmIntoInventory(connection, "Sequel to the Prequel",
             "Memorable", 98, "PG-13");
+    System.out.println ("Testing for Insert ( verify using query ), expected output = 'Sequel to Prequel'..");
+    String query = "SELECT title FROM dv_film WHERE title = 'Sequel to the Prequel';"
+    try {
+        stmt= connection.createStatement();
+        ResultSet rs = stmt.executeQuery(query);
+        while (rs.next()){
+            System.out.println (rs.getString("title"));
+        }
+            rs.close();
+            stmt.close();
+        } catch (SQLException e) {
+            System.err.println("Query failed in driver");
+            System.err.println("Message from Postgres: " + e.getMessage());
+            System.exit(-1);
+         }
+
+    System.out.println(INSERT);
 
     connection.close(); //Closing Connection
     }
