@@ -1,3 +1,6 @@
+/*Elijah Cordova 1425119*/
+/*Lab 4 StoreApplication.java*/
+
 import java.sql.*;
 import java.util.*;
 
@@ -30,8 +33,9 @@ public class StoreApplication {
 		  	result.add(rs.getString("phone"));
 		  }
 	     } catch (SQLException e) {
-	    	System.out.print ("error at getCustomerPhone");
-	    	System.exit(1);
+	    		System.err.println("Query failed in getCustomerPhoneFromFirstLastName()");
+				System.err.println("Message from Postgres: " + e.getMessage());
+				System.exit(-1);
 	     }
 	      System.out.println(result);
 		return result;
@@ -52,8 +56,9 @@ public class StoreApplication {
 		  	result.add(rs.getString("title"));
 		  }
 	     } catch (SQLException e) {
-	    	System.out.print ("error at getCustomerPhone");
-	    	System.exit(1);
+	    	System.err.println("Query failed in getFilmTitlesBasedOnLengthRange()");
+			System.err.println("Message from Postgres: " + e.getMessage());
+			System.exit(-1);
 	     }
 	      System.out.println(result.size());
 
@@ -79,8 +84,9 @@ public class StoreApplication {
 		  	result= rs.getInt(1);
 		  }
 	     } catch (SQLException e) {
-	    	System.out.print ("countcustomers");
-	    	System.exit(1);
+	    	System.err.println("Query failed in countCustomersInDistrict()");
+			System.err.println("Message from Postgres: " + e.getMessage());
+			System.exit(-1);
 	     }
 	      System.out.println(result);
 		return result;
@@ -103,8 +109,9 @@ public class StoreApplication {
          try (Statement stmt = connection.createStatement()){
 		  ResultSet rs = stmt.executeQuery(query);
 	     } catch (SQLException e) {
-	    	System.out.print ("countcustomers");
-	    	System.exit(1);
+	    	System.err.println("Query failed in insertFilmIntoInventory()");
+			System.err.println("Message from Postgres: " + e.getMessage());
+			System.exit(-1);
 	     }
 
 	}
