@@ -98,11 +98,14 @@ public class StoreApplication {
 	 */
 	public void insertFilmIntoInventory(Connection connection, String
 			title, String description, int length, String rating){
-		 if (rating =="")
-		 rating = "?";
-         String query = "INSERT INTO dv_film VALUES (DEFAULT,'"+title+"','"+description+"',"+length+",'"+rating+"')";
-         try (Statement stmt = connection.createStatement()){
-		 stmt.executeQuery(query);
+         try {
+		 	PreparedStatement stmt = connection.prepareStatement("INSERT INTO dv_film (title, description, length, rating) VALUES (?, ?, ?, cast(? as mpaa_rating));");
+		 	stmt.setString(1, title);
+        	stmt.setString(2, description);
+        	stmt.setInt(3, length);
+        	stmt.setString(4, rating);
+        	stmt.execute();
+        	stmt.close();
 	     } catch (SQLException e) {
 	    	System.err.println("Query failed in insertFilmIntoInventory()");
 			System.err.println("Message from Postgres: " + e.getMessage());
