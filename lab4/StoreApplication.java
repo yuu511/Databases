@@ -57,7 +57,7 @@ public class StoreApplication {
 		  stmt.setInt(1, minLength);
 		  stmt.setInt(2, maxLength);
 		  ResultSet rs = stmt.executeQuery();
-		   while (rs.next()){
+		  while (rs.next()){
 		  	result.add(rs.getString(1));
 		  }
 		  	rs.close();
@@ -82,7 +82,7 @@ public class StoreApplication {
 		  stmt.setString(1, districtName);
 		  stmt.setBoolean(2, active);
 		  ResultSet rs = stmt.executeQuery();
-		   while (rs.next()){
+		  while (rs.next()){
 		  	result = (rs.getInt(1));
 		  }
 		  	rs.close();
