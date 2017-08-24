@@ -42,7 +42,7 @@ public class Driver
     app.insertFilmIntoInventory(connection, "Sequel to the Prequel",
             "Memorable", 98, "PG-13");
     System.out.println ("Testing for Insert ( verify using query ), expected output = 'Sequel to Prequel'..");
-    String query = "SELECT title FROM dv_film WHERE title = 'Sequel to the Prequel';"
+    String query = "SELECT title FROM dv_film WHERE title = 'Sequel to the Prequel';";
     try {
         stmt= connection.createStatement();
         ResultSet rs = stmt.executeQuery(query);
