@@ -27,7 +27,7 @@ public class StoreApplication {
 			String firstName, String lastName) {
 		List<String> result = new ArrayList<String>();
 		try {
-		  PreparedStatement stmt = connection.prepareStatement("SELECT phone FROM dv_address WHERE address_id = (SELECT address_id FROM mg_customersWHERE first_name= ? AND last_name = ?");
+		  PreparedStatement stmt = connection.prepareStatement("SELECT phone FROM dv_address WHERE address_id = (SELECT address_id FROM mg_customers WHERE first_name= ? AND last_name = ?)");
 		  stmt.setString(1, firstName);
 		  stmt.setString(2, lastName);
 		  ResultSet rs = stmt.executeQuery();
