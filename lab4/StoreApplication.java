@@ -26,7 +26,6 @@ public class StoreApplication {
 	public List<String> getCustomerPhoneFromFirstLastName(Connection connection,
 			String firstName, String lastName) {
 		List<String> result = new ArrayList<String>();
-		String query = ;
 		try {
 		  PreparedStatement stmt = connection.prepareStatement("SELECT phone FROM dv_address WHERE address_id = (SELECT address_id FROM mg_customersWHERE first_name= ? AND last_name = ?");
 		  stmt.setString(1, firstName);
@@ -36,7 +35,7 @@ public class StoreApplication {
 		  	result.add(rs.getString("phone"));
 		  }
 		  	rs.close();
-		  	stmt.close()
+		  	stmt.close();
 		  	System.out.println(result.size());
 	     } catch (SQLException e) {
 	    		System.err.println("Query failed in getCustomerPhoneFromFirstLastName()");
@@ -63,7 +62,7 @@ public class StoreApplication {
 		  	result.add(rs.getString(1));
 		  }
 		  	rs.close();
-		  	stmt.close()
+		  	stmt.close();
 		  	System.out.println(result.size());
 		  }
 	     } catch (SQLException e) {
@@ -90,7 +89,7 @@ public class StoreApplication {
 		  	result = (rs.getInt(1));
 		  }
 		  	rs.close();
-		  	stmt.close()
+		  	stmt.close();
 		  	System.out.println(result);
 	     } catch (SQLException e) {
 	    	System.err.println("Query failed in countCustomersInDistrict()");
