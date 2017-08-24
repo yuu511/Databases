@@ -57,9 +57,6 @@ public class Driver
             System.err.println("Message from Postgres: " + e.getMessage());
             System.exit(-1);
          }
-
-    System.out.println(INSERT);
-
     connection.close(); //Closing Connection
     }
 }
