@@ -37,7 +37,6 @@ public class StoreApplication {
 				System.err.println("Message from Postgres: " + e.getMessage());
 				System.exit(-1);
 	     }
-	      System.out.println(result);
 		return result;
 	}
 
@@ -60,8 +59,6 @@ public class StoreApplication {
 			System.err.println("Message from Postgres: " + e.getMessage());
 			System.exit(-1);
 	     }
-	      System.out.println(result.size());
-
 		return result;
 	}
 
@@ -88,7 +85,6 @@ public class StoreApplication {
 			System.err.println("Message from Postgres: " + e.getMessage());
 			System.exit(-1);
 	     }
-	      System.out.println(result);
 		return result;
 	}
 
@@ -105,9 +101,8 @@ public class StoreApplication {
 		 if (rating =="")
 		 rating = "?";
          String query = "INSERT INTO dv_film VALUES (DEFAULT,'"+title+"','"+description+"',"+length+",'"+rating+"')";
-         System.out.print (query);
          try (Statement stmt = connection.createStatement()){
-		  ResultSet rs = stmt.executeQuery(query);
+		 stmt.executeQuery(query);
 	     } catch (SQLException e) {
 	    	System.err.println("Query failed in insertFilmIntoInventory()");
 			System.err.println("Message from Postgres: " + e.getMessage());
