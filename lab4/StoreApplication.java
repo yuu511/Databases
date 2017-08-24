@@ -26,12 +26,18 @@ public class StoreApplication {
 	public List<String> getCustomerPhoneFromFirstLastName(Connection connection,
 			String firstName, String lastName) {
 		List<String> result = new ArrayList<String>();
-		String query = "SELECT phone FROM dv_address WHERE address_id = (SELECT address_id FROM mg_customers WHERE first_name = '"+firstName+"' AND last_name = '"+ lastName +"')";
-		try (Statement stmt = connection.createStatement()){
-		  ResultSet rs = stmt.executeQuery(query);
+		String query = ;
+		try {
+		  PreparedStatement stmt = connection.prepareStatement("SELECT phone FROM dv_address WHERE address_id = (SELECT address_id FROM mg_customersWHERE first_name= ? AND last_name = ?");
+		  stmt.setString(1, firstName);
+		  stmt.setString(2, lastName);
+		  ResultSet rs = stmt.executeQuery();
 		  while (rs.next()){
 		  	result.add(rs.getString("phone"));
 		  }
+		  	rs.close();
+		  	stmt.close()
+		  	System.out.println(result.size());
 	     } catch (SQLException e) {
 	    		System.err.println("Query failed in getCustomerPhoneFromFirstLastName()");
 				System.err.println("Message from Postgres: " + e.getMessage());
@@ -48,11 +54,17 @@ public class StoreApplication {
 	public List<String> getFilmTitlesBasedOnLengthRange(Connection connection,
 			int minLength, int maxLength) {
 		List<String> result = new LinkedList<String>();
-		String query = "SELECT a.title FROM dv_film a WHERE length >="+minLength+" AND length <="+maxLength+"";
-        try (Statement stmt = connection.createStatement()){
-		  ResultSet rs = stmt.executeQuery(query);
-		  while (rs.next()){
-		  	result.add(rs.getString("title"));
+        try {
+		  PreparedStatement stmt = connection.prepareStatement("SELECT a.title FROM dv_film a WHERE length >= ? AND length <= ?");
+		  stmt.setInt(1, minLength);
+		  stmt.setString(2, maxLength);
+		  ResultSet rs = stmt.executeQuery();
+		   while (rs.next()){
+		  	result.add(rs.getString(1));
+		  }
+		  	rs.close();
+		  	stmt.close()
+		  	System.out.println(result.size());
 		  }
 	     } catch (SQLException e) {
 	    	System.err.println("Query failed in getFilmTitlesBasedOnLengthRange()");
@@ -69,17 +81,17 @@ public class StoreApplication {
 	public final int countCustomersInDistrict(Connection connection,
 			String districtName, boolean active) {
 		int result = -1;
-		String aQ;
-		if (active)
-			aQ="t";
-		else
-			aQ="f";
-		String query ="SELECT count(a) FROM mg_customers a, dv_address b WHERE a.address_id = b.address_id AND b.district ='"+districtName+"' AND a.active = '"+aQ+"'";
-        try (Statement stmt = connection.createStatement()){
-		  ResultSet rs = stmt.executeQuery(query);
-		  while (rs.next()){
-		  	result= rs.getInt(1);
+        try {
+		PreparedStatement stmt = connection.prepareStatement("SELECT count(a) FROM mg_customers a, dv_address b WHERE a.address_id = b.address_id AND b.district = ? AND a.active = ?;");
+		  stmt.setString(1, districtName);
+		  stmt.setBoolean(2, active);
+		  ResultSet rs = stmt.executeQuery();
+		   while (rs.next()){
+		  	result = (rs.getInt(1));
 		  }
+		  	rs.close();
+		  	stmt.close()
+		  	System.out.println(result);
 	     } catch (SQLException e) {
 	    	System.err.println("Query failed in countCustomersInDistrict()");
 			System.err.println("Message from Postgres: " + e.getMessage());
