@@ -56,7 +56,7 @@ public class StoreApplication {
         try {
 		  PreparedStatement stmt = connection.prepareStatement("SELECT a.title FROM dv_film a WHERE length >= ? AND length <= ?");
 		  stmt.setInt(1, minLength);
-		  stmt.setString(2, maxLength);
+		  stmt.setInt(2, maxLength);
 		  ResultSet rs = stmt.executeQuery();
 		   while (rs.next()){
 		  	result.add(rs.getString(1));
