@@ -33,14 +33,14 @@ public class StoreApplication {
 		  ResultSet rs = stmt.executeQuery();
 		  while (rs.next()){
 		  	result.add(rs.getString("phone"));
-		  }
+		}
 		   rs.close();
 		   stmt.close();
-	     } catch (SQLException e) {
-	    		System.err.println("Query failed in getCustomerPhoneFromFirstLastName()");
-				System.err.println("Message from Postgres: " + e.getMessage());
-				System.exit(-1);
-	     }
+	    } catch (SQLException e) {
+	        System.err.println("Query failed in getCustomerPhoneFromFirstLastName()");
+		    System.err.println("Message from Postgres: " + e.getMessage());
+		    System.exit(-1);
+	    }
 		return result;
 	}
 
@@ -59,14 +59,14 @@ public class StoreApplication {
 		  ResultSet rs = stmt.executeQuery();
 		  while (rs.next()){
 		  	result.add(rs.getString(1));
-		  }
+		}
 		  	rs.close();
 		  	stmt.close();
-		  } catch (SQLException e) {
+		} catch (SQLException e) {
 	    	System.err.println("Query failed in getFilmTitlesBasedOnLengthRange()");
 			System.err.println("Message from Postgres: " + e.getMessage());
 			System.exit(-1);
-	     }
+	    }
 		return result;
 	}
 
