@@ -27,13 +27,13 @@ public class Driver
     StoreApplication app = new StoreApplication();
 
     List<String> phoneNumbers =
-        app.getCustomerPhoneFromFirstLastName(connection, "John",
-                "Farnsworth");
-    System.out.println (phoneNumbers.size());
+        app.getCustomerPhoneFromFirstLastName(connection, "Mary",
+                "Smith");
+    System.out.println (phoneNumbers);
     
     List<String> filmTitles =
-        app.getFilmTitlesBasedOnLengthRange(connection, 60, 120);
-    System.out.println (filmTitles.size());    
+        app.getFilmTitlesBasedOnLengthRange(connection, 45, 47);
+    System.out.println (filmTitles);    
     
     int count = app.countCustomersInDistrict(connection, "Buenos Aires",
             true);
