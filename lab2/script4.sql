@@ -1,3 +1,4 @@
+
 /*Elijah Cordova 1425119*/
 /*Lab 2 script4.sql*/
 
@@ -38,18 +39,20 @@ GROUP BY rating
 ORDER BY count(*) ASC
 LIMIT 1;
 
-/*5.What are the first and last names of the top 10 authors when ranked by the number of
+/*5.What are the first and last names of the top 10 authors when radnked by the number of
 books eachhaswritten? (Returnbothauthornameandthenumber ofbooksoftop10
 authors, sorted in descending order)*/
 
-SELECT DISTINCT first_name, last_name, count(cb_books.author_id)
+SELECT first_name, last_name, (count(cb_authors.author_id)/16) as Number_of_Books
 FROM cb_authors, cb_books 
 WHERE cb_authors.author_id = cb_books.author_id AND cb_authors.author_id IN
-(SELECT b.author_id
+(SELECT  b.author_id
 FROM cb_books b
 GROUP BY  b.author_id
 ORDER BY count(*) DESC
-LIMIT 10);
+LIMIT 10)
+GROUP BY last_name,first_name
+ORDER BY count(cb_authors.author_id ) DESC;
 
 
 
